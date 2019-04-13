@@ -22,23 +22,23 @@ export interface Forecast {
   temp_kf: number;
 }
 
-export interface WeatherDescription {
+export interface WeatherDescription { // list item - weather[0]
   id: number;
   main: string;
   description: string;
   icon: string;
 }
 
-export interface Clouds {
+export interface Clouds { // list item - clouds
   all: number;
 }
 
-export interface Wind {
+export interface Wind {  // list item - wind
   speed: number;
   deg: number;
 }
 
-export interface WeatherSys {
+export interface WeatherSys {  // list item - sys
   pod: string;
 }
 

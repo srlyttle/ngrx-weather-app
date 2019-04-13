@@ -17,7 +17,9 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
   searchWeatherForCity(city) {
-    // implement the service
+    const paramsForSearch = { ...this.params, q: 'belfast' };
+    const param: any = { 'userId': 2 };
+    return this.http.get(`${this.url}`, { params: paramsForSearch });
   }
 
 }

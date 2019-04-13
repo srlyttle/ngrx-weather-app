@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WeatherContainer } from './weather.container';
-import { WeatherService } from './weather.service';
-import { SearchComponent } from './components/search/search.component';
-import { ResultsComponent } from './components/results/results.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+
+import { WeatherContainer } from '@app/weather/weather.container';
+import { WeatherService } from '@app/weather/weather.service';
+import { SearchComponent } from '@app/weather/components/search/search.component';
+import { ResultsComponent } from '@app/weather/components/results/results.component';
+import { reducers } from '@app/weather/store';
 
 
-// IF YOU DECIDE TO USE NG-RX YOU'LL NEED TO UNCOMMENT SOME LINES
-// import { StoreModule } from '@ngrx/store';
-// import { EffectsModule } from '@ngrx/effects';
-// import { reducers, effects } from './store';
 
 @NgModule({
   imports: [
     CommonModule,
-    // StoreModule.forFeature('weather', reducers),
+    HttpClientModule,
+    StoreModule.forFeature('weatherFeature', reducers),
     // EffectsModule.forFeature(effects)
   ],
   declarations: [
