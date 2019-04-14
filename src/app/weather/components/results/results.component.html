@@ -2,19 +2,20 @@
   <thead class="thead-dark">
   <tr>
     <th scope="col">City</th>
-    <th scope="col">6 AM</th>
-    <th scope="col">12 PM</th>
-    <th scope="col">6 PM</th>
-    <th scope="col">12 AM</th>
+    <th *ngFor="let header of timeHeaders" scope="col">{{ header | date:'dd/MM' }}<br/>{{ header | date:'shortTime' }} </th>
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td scope="row">London</td>
-    <td scope="row">3 &deg;</td>
-    <td scope="row">12.5 &deg;</td>
-    <td scope="row">9 &deg;</td>
-    <td scope="row">2 &deg;</td>
+  <tr *ngFor="let cityItem of cityWeather; let i = index">
+    <td scope="row">{{getCityName(cityItem)}}</td>
+    <td scope="row">{{getTemperature(cityItem,0)}}&deg;<br/><img [src]="getWeatherIconSrc(cityItem,0)" [alt]="getWeatherIconAlt(cityItem,0)"> <br/> {{getWindSpeed(cityItem,0)}} <br/></td>
+    <td scope="row">{{getTemperature(cityItem,1)}}&deg;<br/><img [src]="getWeatherIconSrc(cityItem,1)" [alt]="getWeatherIconAlt(cityItem,1)"> <br/> {{getWindSpeed(cityItem,1)}} <br/></td>
+    <td scope="row">{{getTemperature(cityItem,2)}}&deg;<br/><img [src]="getWeatherIconSrc(cityItem,2)" [alt]="getWeatherIconAlt(cityItem,2)"> <br/> {{getWindSpeed(cityItem,2)}} <br/></td>
+    <td scope="row">{{getTemperature(cityItem,3)}}&deg;<br/><img [src]="getWeatherIconSrc(cityItem,3)" [alt]="getWeatherIconAlt(cityItem,3)"> <br/> {{getWindSpeed(cityItem,3)}} <br/></td>
+    <td scope="row">{{getTemperature(cityItem,4)}}&deg;<br/><img [src]="getWeatherIconSrc(cityItem,4)" [alt]="getWeatherIconAlt(cityItem,4)"> <br/> {{getWindSpeed(cityItem,4)}} <br/></td>
+    <td scope="row">{{getTemperature(cityItem,5)}}&deg;<br/><img [src]="getWeatherIconSrc(cityItem,5)" [alt]="getWeatherIconAlt(cityItem,5)"> <br/> {{getWindSpeed(cityItem,5)}} <br/></td>
+    <td scope="row">{{getTemperature(cityItem,6)}}&deg;<br/><img [src]="getWeatherIconSrc(cityItem,6)" [alt]="getWeatherIconAlt(cityItem,6)"> <br/> {{getWindSpeed(cityItem,6)}} <br/></td>
+    <td scope="row">{{getTemperature(cityItem,7)}}&deg;<br/><img [src]="getWeatherIconSrc(cityItem,7)" [alt]="getWeatherIconAlt(cityItem,7)"> <br/> {{getWindSpeed(cityItem,7)}} <br/></td>
   </tr>
   </tbody>
 </table>

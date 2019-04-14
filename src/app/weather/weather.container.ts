@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import * as fromStore from '@app/weather/store';
+import { Weather } from '@app/model/weather';
 
 @Component({
   selector: 'app-weather',
-  template: `
-  <app-search></app-search>
-  <app-results></app-results>  `
+  templateUrl: './weather.container.html'
 })
-export class WeatherContainer {
+export class WeatherContainer implements OnInit {
 
-  constructor() {}
+  cityWeather$: Observable<Weather[]>;
+  constructor(private store: Store<fromStore.WeatherFeatureState>) { }
 
-  citySearch() {
-    // TO BE IMPLMENTED
+  ngOnInit() {
+    this.cityWeather$ = this.store.select(fromStore.getAllCities);
+  }
+  citySearch(searchValue: string) {
+    this.store.dispatch(new fromStore.LoadCityWeather({ cityName: searchValue }));
   }
 }

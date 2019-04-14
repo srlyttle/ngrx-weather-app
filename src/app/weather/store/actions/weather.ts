@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Weather } from '@app/model/weather';
 
 export const LOAD_CITY_WEATHER = '[Weather] Load City Weather';
 export const LOAD_CITY_WEATHER_SUCCESS = '[Weather] Load City Weather Success';
@@ -12,7 +13,7 @@ export class LoadCityWeather implements Action {
 }
 export class LoadCityWeatherSuccess implements Action {
     readonly type = LOAD_CITY_WEATHER_SUCCESS;
-    constructor(public payload: any[]) { }
+    constructor(public payload: Weather) { }
 }
 
 export class LoadCityWeatherFail implements Action {

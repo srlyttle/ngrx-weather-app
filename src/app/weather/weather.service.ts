@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
+import { Weather } from '@app/model/weather';
 
 @Injectable()
 export class WeatherService {
@@ -16,9 +17,8 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  searchWeatherForCity(city) {
-    const paramsForSearch = { ...this.params, q: 'belfast' };
-    const param: any = { 'userId': 2 };
+  searchWeatherForCity(city: string): Observable<Weather> {
+    const paramsForSearch = { ...this.params, q: city };
     return this.http.get(`${this.url}`, { params: paramsForSearch });
   }
 

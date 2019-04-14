@@ -1,0 +1,9 @@
+<app-search (searchCity)="citySearch($event)"></app-search>
+
+
+<ng-container *ngIf="(cityWeather$ | async) as cityWeather">
+    <div *ngIf="!cityWeather?.length">
+        No cities, add one to get started.
+    </div>
+    <app-results *ngIf="cityWeather?.length>0" [cityWeather]="cityWeather"></app-results>
+</ng-container>
