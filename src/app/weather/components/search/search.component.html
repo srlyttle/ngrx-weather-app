@@ -1,6 +1,6 @@
 <form [formGroup]="searchForm" novalidate (ngSubmit)="onSubmit()" class="form-inline mb-5">
   <div class="form-group col-8 pl-0">
-    <input class="form-control mt-3 col"
+    <input xauto-weather-search-input class="form-control mt-3 col"
            id="city"
            name="city"
            formControlName="city"
@@ -8,9 +8,9 @@
            type="text"
            [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
-            <div *ngIf="f.city.errors.minlength">City must be at least 3 characters</div>
+            <div xauto-weather-search-validation-min-message *ngIf="f.city.errors.minlength">City must be at least 3 characters</div>
             <div *ngIf="f.city.errors.required">City is required</div>
           </div>
   </div>
-  <button class="btn-search btn btn-primary mt-3 col-4" type="submit">Search</button>
+  <button xauto-weather-search-button class="btn-search btn btn-primary mt-3 col-4" type="submit">Search</button>
 </form>

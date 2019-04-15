@@ -38,6 +38,13 @@ export function reducer(state = initialState, action: fromActions.WeatherAction)
         error: errorMessage
       };
 
+    case fromActions.LOAD_CITY_WEATHER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+
     default:
       return state;
   }
